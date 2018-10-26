@@ -28,7 +28,7 @@ module.exports={
 	],
 	module:{   //用于配置所有的第三方模块加载器
 		rules:[   //所有的第三方模块的匹配规则
-			{ test:/\.css$/, use:['style-loader' ,'css-loader'] }, //配置处理.css文件的第三方loader规则
+			{ test:/\.(css|less|sass)$/, use:['style-loader' ,'css-loader'] }, //配置处理.css文件的第三方loader规则
 			{ test:/\.(jpg|png|jpeg|gif|bmp)$/, use:'url-loader?limit='+imgSize+'&name=[hash:8]-[name].[ext]' }, //处理图片路径的loader, limit是给定的值
 			//是指文件的大小，单位是B，如果我们引用的图片大于给定的大小，那么图片将不会转化为base64的格式，如果小于给定的大小，将会转换成base64的格式,
 			{ test:/\.(ttf|woff|woff2|eot|svg)$/, use:'url-loader' },  //处理字体文件的配置选项
