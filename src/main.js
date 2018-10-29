@@ -16,8 +16,11 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+import moment from 'moment' 
 
-
+Vue.filter('dateFormate',function(dateStr,pattren='YYYY-MM-DD hh:mm:ss'){
+	return moment(dateStr).format(pattren)
+})
 var App = new Vue({
 	el:'#app',
 	render(createElement){

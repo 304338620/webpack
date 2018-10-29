@@ -45,6 +45,9 @@
 		transform: translateX(-100%);
 	}
 	.v-enter-active,.v-leave-acive{
-		transition: all 0.5s linear;
+		transition: all 0.3s linear;
+	}
+	.app-container{
+		padding-bottom:50px ;
 	}
 </style>
