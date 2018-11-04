@@ -1,12 +1,6 @@
 <template>
 	<div>
-		<mt-swipe :auto="4000" :speed="500">
-			<!--在组件中使用v-for指令要使用key绑定-->
-			<mt-swipe-item v-for="item in swipeList" :key="item.url">
-				<img :src="item.url"/>
-			</mt-swipe-item>
-			
-		</mt-swipe>
+		<swipe :swipeList="swipeList" :isfull="true"></swipe>
 		
 		<ul class="mui-table-view mui-grid-view mui-grid-9">
 		    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -16,13 +10,13 @@
 		    	</router-link>
 		    </li>
 		 	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-		    	<router-link to="home/newslist">
+		    	<router-link to="home/photolist">
 		        	<img src="../../img/menu2.png"/>
 		    		<div class="mui-media-body">图片分享</div>
 		    	</router-link>
 		    </li>
 		    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-		    	<router-link to="home/newslist">
+		    	<router-link to="home/goodslist">
 		        	<img src="../../img/menu3.png"/>
 		    		<div class="mui-media-body">商品购买</div>
 		    	</router-link>
@@ -52,6 +46,7 @@
 
 <script>
 	import {Toast} from 'mint-ui'
+	import swipe from '../subComponent/swipe.vue'
 	export default{
 		data(){
 			return {
@@ -72,18 +67,14 @@
 		},
 		created(){
 			this.getSwipeData();
+		},
+		components:{
+			'swipe':swipe
 		}
 	}
 </script>
 
 <style lang="less" scoped>
-	.mint-swipe{
-		height: 240px;
-	}
-	.mint-swipe-item img{
-		width: 100%;
-		height: auto;
-	}
 	.mui-grid-view.mui-grid-9{
 		background-color: #FFFFFF;
 		border: none;

@@ -9,10 +9,12 @@
 		<div class="news-content" v-html="newsInfo.content">
 			
 		</div>
+		<comment></comment>
 	</div>
 </template>
 
 <script>
+	import comment from '../subcomponent/comment.vue'
 	export default {
 		data(){
 			return{
@@ -24,9 +26,12 @@
 			getNewsInfo(){
 				this.$http.get('/src/json/newsInfo.json').then((data)=>{
 					this.newsInfo=data.body.message[0]
-					console.log(this.newsInfo)
+//					console.log(this.newsInfo)
 				})
 			}
+		},
+		components:{
+			'comment':comment
 		},
 		created(){
 			this.getNewsInfo()

@@ -17,6 +17,8 @@ Vue.use(VueResource)
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 import moment from 'moment' 
+import { Lazyload } from 'mint-ui';
+Vue.use(Lazyload);
 
 Vue.filter('dateFormate',function(dateStr,pattren='YYYY-MM-DD hh:mm:ss'){
 	return moment(dateStr).format(pattren)

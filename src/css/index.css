@@ -3,4 +3,6 @@ div,h3,h1,p,span,a,li,ul,ol,body{
 	margin: 0;
 	padding: 0;
 }
-
+li{
+	list-style: none;
+}
