@@ -4,6 +4,7 @@
     "dev": "webpack-dev-server --mode development --open --port 3000"
   },
   "dependencies": {
+    "fastclick": "^1.0.6",
     "jquery": "^3.2.1",
     "mint-ui": "^2.2.13",
     "moment": "^2.22.2",

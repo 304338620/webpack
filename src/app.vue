@@ -1,7 +1,7 @@
 <template>
 	<div class="app-container">
 		<mt-header title="Vue-mint">
-			<router-link to="/" slot="left">
+			<router-link to="/" slot="left" v-show="flag">
 			    <mt-button icon="back" @click="back">返回</mt-button>
 			</router-link>
 			<mt-button icon="more" slot="right"></mt-button>
@@ -9,7 +9,6 @@
 		<transition>
 			<router-view></router-view>
 		</transition>
-		
 		
 		<nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item1" to="/home">
@@ -21,7 +20,7 @@
 				<span class="mui-tab-label">个人中心</span>
 			</router-link>
 			<router-link class="mui-tab-item1" to="/cart">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">{{ $store.state.cart.length }}</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item1" to="/setting">
@@ -34,9 +33,28 @@
 
 <script>
 	export default {
+		data(){
+			return{
+				flag:true
+			}
+		},
 		methods:{
 			back(){
 				this.$router.go(-1)
+			}
+		},
+		watch:{
+			"$route.path":function(val){
+				if (val=='/home'){
+					this.flag=false
+				}else{
+					this.flag=true
+				}
+			}
+		},
+		created(){
+			if (this.$route.path=='/home') {
+				this.flag=false
 			}
 		}
 	}

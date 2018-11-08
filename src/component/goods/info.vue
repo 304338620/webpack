@@ -13,9 +13,9 @@
 					<h4 class="mui-ellipsis-2">{{ item.title }}</h4>
 					<p class="price"><span>售价：￥{{ item.price }}</span><del>指导价：{{ item.old }}</del></p>
 					<p class="num">
-						购买数量&nbsp;:&nbsp;&nbsp;<numbox></numbox>
+						购买数量&nbsp;:&nbsp;&nbsp;<numbox :max="item.num"></numbox>
 					</p>
-					<p class="mui-text-center"><button class="mui-btn mui-btn-primary">立即购买</button><button class="mui-btn mui-btn-danger">加入购物车</button></p>
+					<p class="mui-text-center"><button class="mui-btn mui-btn-primary mui-btn-outlined">立即购买</button><button class="mui-btn mui-btn-danger mui-btn-outlined" @click="addCart">加入购物车</button></p>
 				</div>
 			</div>
 		</div>
@@ -42,6 +42,7 @@
 				swipeList:[],
 				id:this.$route.query.id,
 				item:{},
+				count:1
 			}
 		},
 		methods:{
@@ -63,6 +64,16 @@
 					})
 					this.item=result[0]
 				})
+			},
+			addCart(){
+				console.log(this.$store)
+				var goodsInfo={
+					id:this.id,
+					count:this.count,
+					price:this.item.price,
+					selectd:true
+				}
+				this.$store.commit("addToCart",goodsInfo)
 			}
 		},
 		created(){
